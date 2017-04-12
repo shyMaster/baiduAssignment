@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 02</title>
+</head>
+
+<body>
+    <h3>污染城市列表</h3>
+    <ul id="aqi-list">
+
+    </ul>
+    <script type="text/javascript">
+        var aqiData = [
+                ["北京", 90],
+                ["上海", 50],
+                ["福州", 10],
+                ["广州", 50],
+                ["成都", 90],
+                ["西安", 100],
+            ]
+            /*
+              在注释下方编写代码
+              遍历读取aqiData中各个城市的数据
+              将空气质量指数大于60的城市显示到aqi-list的列表中
+            */
+
+        var filterDate = []
+            //空气质量指数大于60
+        function isBigerNum(element) {
+            return element[1] > 60
+        }
+        filterDate = aqiData.filter(isBigerNum)
+            //从大到小排序
+        filterDate.sort(function(a, b) {
+            return b[1] - a[1]
+        })
+          var ulElement = document.getElementById("aqi-list")
+
+/*        for (var i = 0; i < filterDate.length; i++) {
+            var chineseNumber = ["一", "二", "三", "四", "五", "六"]
+            var li = document.createElement("li")
+            li.innerText = "第" + chineseNumber[i] + "名: " + filterDate[i][0] + ", " + filterDate[i][1]
+            ulElement.appendChild(li)
+        }*/
+        
+        var num = 0
+        filterDate.forEach((element) => {
+            var chineseNumber = ["一", "二", "三", "四", "五", "六"]
+            var li = document.createElement("li")
+            li.innerText = "第" + chineseNumber[num] + "名: " + element[0] + ", " + element[1]
+            ulElement.appendChild(li)
+            num++
+        })
+    </script>
+</body>
+
+</html>
